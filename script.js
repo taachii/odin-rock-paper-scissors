@@ -1,13 +1,21 @@
 let computerScore = 0;
 let playerScore = 0;
 
-const playerSelection = prompt("Pick an item");
+const items = ["ROCK", "PAPER", "SCISSORS"]; 
+const playerSelection = getPlayerChoice();
 const computerSelection = getComputerChoice();
 
 console.log(playRound(computerSelection, playerSelection));
 
+function getPlayerChoice() {
+  while(true) {
+    const choice = prompt("Choose your item").toUpperCase();
+    if(items.includes(choice)) return choice
+    else alert("Wrong item!");
+  }
+}
+
 function getComputerChoice(){
-  const items = ["Rock", "Paper", "Scissors"]; 
   return items[Math.floor(Math.random() * items.length)];
 }
 
@@ -19,9 +27,9 @@ function playRound(computerSelection, playerSelection) {
   }
   else {
     if(
-      computerSelection === "Rock" && playerSelection === "Scissors" ||
-      computerSelection === "Paper" && playerSelection === "Rock" ||
-      computerSelection === "Scissors" && playerSelection === "Paper"
+      computerSelection === "ROCK" && playerSelection === "SCISSORS" ||
+      computerSelection === "PAPER" && playerSelection === "ROCK" ||
+      computerSelection === "SCISSORS" && playerSelection === "PAPER"
     ) {
       return computerWins();
     }
