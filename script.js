@@ -42,15 +42,27 @@ function playRound(computerSelection, playerSelection) {
 function tie() {
   computerScore++;
   playerScore++;
+  logCurrentScore();
   return "It's a tie!";
 }
 
 function playerWins() {
   playerScore++;
+  logCurrentScore();
   return "Player wins!";
 }
 
 function computerWins() {
   computerScore++;
+  logCurrentScore();
   return "Computer wins!";
+}
+
+function logCurrentScore() {
+  console.log(
+    `SCORE:
+    
+    COMPUTER: ${computerScore}
+    PLAYER: ${playerScore}`
+  );
 }
