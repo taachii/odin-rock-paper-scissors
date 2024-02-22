@@ -2,10 +2,16 @@ let computerScore = 0;
 let playerScore = 0;
 
 const items = ["ROCK", "PAPER", "SCISSORS"]; 
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
+playGame(5);
 
-console.log(playRound(computerSelection, playerSelection));
+function playGame(rounds) {
+  for(let i = 0; i < rounds; i++) {
+    const playerSelection = getPlayerChoice();
+    const computerSelection = getComputerChoice();
+    console.log(playRound(computerSelection, playerSelection));
+    logCurrentScore();
+  }
+}
 
 function getPlayerChoice() {
   while(true) {
@@ -42,26 +48,23 @@ function playRound(computerSelection, playerSelection) {
 function tie() {
   computerScore++;
   playerScore++;
-  logCurrentScore();
   return "It's a tie!";
 }
 
 function playerWins() {
   playerScore++;
-  logCurrentScore();
   return "Player wins!";
 }
 
 function computerWins() {
   computerScore++;
-  logCurrentScore();
   return "Computer wins!";
 }
 
 function logCurrentScore() {
   console.log(
     `SCORE:
-    
+
     COMPUTER: ${computerScore}
     PLAYER: ${playerScore}`
   );
