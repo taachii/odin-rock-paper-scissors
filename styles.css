@@ -1,0 +1,90 @@
+body {
+  text-align: center;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family:'Courier New', Courier, monospace;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header, footer {
+  background-color: rgb(59, 64, 68);
+  font-weight: bold;
+}
+
+header {
+  color: rgb(13, 203, 13);
+  padding: 48px;
+}
+
+footer {
+  color: white;
+  padding: 32px;
+}
+
+  header > h1 {
+    margin: 0;
+  }
+
+.content {
+  font-size: 1.4em;
+  background-color: #dfdfdf;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  flex-wrap: wrap;
+}
+
+.content > div {
+  width: 40vw;
+}
+
+.score {
+  margin-top: 1.4em;
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttons {
+  padding: 32px 0;
+  background-color: #bbbbbb;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4em;
+  border-radius: 2em;
+}
+
+  .buttons > img {
+    width: 8vw;
+    height: auto;
+    transition: transform .2s;
+  }
+
+    .buttons > img:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+
+
+.info {
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+  .info > #winner-info,
+  .score > p > span {
+    color: rgb(2, 147, 2);
+    font-weight: bold;
+  }
