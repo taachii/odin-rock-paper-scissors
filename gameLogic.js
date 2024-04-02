@@ -1,8 +1,8 @@
 // Game Variables
 let compScore = 0;
 let playerScore = 0;
-let playerSelection = "";
-let compSelection = "";
+let playerSelection;
+let compSelection;
 
 // DOM elements
 const playerScoreText = document.querySelector("#player-score");
