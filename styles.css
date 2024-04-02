@@ -68,6 +68,7 @@ footer {
     width: 8vw;
     height: auto;
     transition: transform .2s;
+    
   }
 
     .buttons > img:hover {
@@ -78,13 +79,14 @@ footer {
 
 .info {
   padding: 16px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
   .info > #winner-info,
   .score > p > span {
     color: rgb(2, 147, 2);
+    font-weight: bold;
+  }
+
+  .info > * > span {
     font-weight: bold;
   }

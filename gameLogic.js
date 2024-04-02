@@ -1,71 +1,70 @@
-let computerScore = 0;
+// Game Variables
+let compScore = 0;
 let playerScore = 0;
+let playerSelection = "";
+let compSelection = "";
 
-const items = ["ROCK", "PAPER", "SCISSORS"]; 
-playGame(5);
+// DOM elements
+const playerScoreText = document.querySelector("#player-score");
+const compScoreText = document.querySelector("#comp-score");
+const playerInfo = document.querySelector("#player-info");
+const compInfo = document.querySelector("#comp-info");
+const winnerInfo = document.querySelector("#winner-info");
+const buttons = document.querySelectorAll(".button");
 
-function playGame(rounds) {
-  for(let i = 0; i < rounds; i++) {
-    const playerSelection = getPlayerChoice();
-    const computerSelection = getComputerChoice();
-    console.log(playRound(computerSelection, playerSelection));
-    logCurrentScore();
-  }
-}
 
-function getPlayerChoice() {
-  while(true) {
-    const choice = prompt("Choose your item").toUpperCase();
-    if(items.includes(choice)) return choice
-    else alert("Wrong item!");
-  }
+buttons.forEach(button => {
+  button.addEventListener("click", playRound)
+});
+
+function playRound(e) {
+    playerSelection = e.target.id;
+    playerInfo.innerHTML = "You picked: <span>" + playerSelection + "</span>";
+    compSelection = getComputerChoice();
+    compInfo.innerHTML = "Computer picked: <span>" + compSelection + "</span>";
+    assessWinner();
+    updateDisplayedScore();
 }
 
 function getComputerChoice(){
+  const items = ["rock", "paper", "scissors"]; 
   return items[Math.floor(Math.random() * items.length)];
 }
 
-function playRound(computerSelection, playerSelection) {
-  console.log(`Computer: ${computerSelection}\nPlayer: ${playerSelection}\n`)
-
-  if(computerSelection === playerSelection) {
-    return tie();
+function assessWinner() {
+ 
+  if(compSelection === playerSelection) {
+    tie();
   }
   else {
     if(
-      computerSelection === "ROCK" && playerSelection === "SCISSORS" ||
-      computerSelection === "PAPER" && playerSelection === "ROCK" ||
-      computerSelection === "SCISSORS" && playerSelection === "PAPER"
+      compSelection === "rock" && playerSelection === "scissors" ||
+      compSelection === "paper" && playerSelection === "rock" ||
+      compSelection === "scissors" && playerSelection === "paper"
     ) {
-      return computerWins();
+      computerWins();
     }
     else {
-      return playerWins();
+      playerWins();
     }
   }
 }
 
 function tie() {
-  computerScore++;
-  playerScore++;
-  return "It's a tie!";
+  winnerInfo.textContent = "It's a tie!";
 }
 
 function playerWins() {
   playerScore++;
-  return "Player wins!";
+  winnerInfo.textContent = "You win!";
 }
 
 function computerWins() {
-  computerScore++;
-  return "Computer wins!";
+  compScore++;
+  winnerInfo.textContent = "Computer wins!";
 }
 
-function logCurrentScore() {
-  console.log(
-    `SCORE:
-
-    COMPUTER: ${computerScore}
-    PLAYER: ${playerScore}`
-  );
+function updateDisplayedScore() {
+  playerScoreText.textContent = playerScore;
+  compScoreText.textContent = compScore;
 }
